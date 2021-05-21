@@ -1,4 +1,5 @@
 var express = require('express');
+require('dotenv').config();
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -8,6 +9,8 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 
 var app = express();
+
+//require('dotenv').config('/.env')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

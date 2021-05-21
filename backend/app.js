@@ -8,7 +8,12 @@ var conString = process.env.DB;
 // Routes
 app.get('/api/status', function(req, res) {
   console.log("request received")
-  pg.connect(conString, function(err, client, done) {
+      return res.json({
+        request_uuid: uuid.v4(),
+        time: 'Demo'
+});
+
+/*  pg.connect(conString, function(err, client, done) {
     if(err) {
       return res.status(500).send('error fetching client from pool');
     }
@@ -24,8 +29,8 @@ app.get('/api/status', function(req, res) {
         request_uuid: uuid.v4(),
         time: result.rows[0].time
       });
-    });
-  });
+    }); 
+  });*/
 });
 
 

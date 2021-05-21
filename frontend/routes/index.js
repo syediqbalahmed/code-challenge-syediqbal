@@ -1,8 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
-
-
+var separateReqPool = {maxSockets: 20};
 var api_url =  process.env.API_HOST + '/api/status';
 console.log(api_url);
 
@@ -14,7 +13,8 @@ router.get('/', function(req, res, next) {
     {
       method: 'GET',
       url: api_url,
-      json: true
+      json: true,
+      pool: separateReqPool
     },
     function (error, response, body) {
       console.log(error)
