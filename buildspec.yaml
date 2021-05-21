@@ -13,7 +13,7 @@ phases:
     commands:
       - echo Entered the pre_build phase...
       - echo Logging in to Amazon ECR...
-      - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
+      - $(aws ecr get-login --no-include-email --region ap-south-1)
       - echo Build files...
 #      - yarn clean
 #      - yarn build
@@ -23,8 +23,8 @@ phases:
       - echo Building the Docker image...
       #- docker build -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$ENV -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$COMMIT_HASH .
       # Build Docker image
-      - docker build -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/frontend:latest -f ./frontend/Dockerfile ./frontend
-      - docker build -t $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/backend:latest -f ./backend/Dockerfile ./backend
+      - docker build -t $AWS_ACCOUNT_ID.dkr.ecr.ap-south-1.amazonaws.com/frontend:latest -f ./frontend/Dockerfile ./frontend
+      - docker build -t $AWS_ACCOUNT_ID.dkr.ecr.ap-south-1.amazonaws.com/backend:latest -f ./backend/Dockerfile ./backend
   post_build:
     commands:
       - echo Entered the post_build phase...
