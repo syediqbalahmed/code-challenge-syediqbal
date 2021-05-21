@@ -30,5 +30,9 @@ phases:
       - echo Entered the post_build phase...
       - echo Pushing the Docker image...
      #- docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME
-      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/frontend
-      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/backend
+     # entering region manually for testing purpose
+     #- docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/frontend
+     #- docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/backend
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.ap-south-1.amazonaws.com/frontend
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.ap-south-1.amazonaws.com/backend
+
