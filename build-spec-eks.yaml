@@ -23,4 +23,9 @@ phases:
       - echo List directory
       - ls -la
       - echo Push the latest image to cluster
-      - kubectl apply -f deployment.yaml
+      - kubectl apply -f frontend-deployment.yaml
+      - kubectl apply -f frontend-service.yaml
+      - kubectl apply -f backend-deployment.yaml
+      - kubectl apply -f backend-service.yaml
+      - kubectl apply -f postgres-master-deployment.yaml
+      - kubectl apply -f postgres-master-service.yaml
