@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app-development
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-app
+      environment: testing
+  template:
+    metadata:
+      labels:
+        app: web-app
+        environment: testing
+    spec:
+      containers:
+        - name: mayaws
+          image: <AWS_ACCOUNT_ID>.dkr.ecr.us-east-1.amazonaws.com/web-app:latest
+          resources:
+            requests:
+              cpu: "10m"
+              memory: "128Mi"
+            limits:
+              cpu: "200m"
+              memory: "500Mi"
+          ports:
+            - containerPort: 8080
+              name: http
+          env:
+            - name: MONGO_URI
+              value: "mongodb://admin:admin_password@mongodb-testing:27017/mayaws"
+            - name: ES_URL
+              value: "http://web-app-es.default.svc.cluster.local:9200/"
+          command:
+            - sh
+            - -c
+            - npm start
+          readinessProbe:
+            httpGet:
+              path: /readiness_check
+              port: 8080
+            initialDelaySeconds: 60
+            timeoutSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /liveness_check
+              port: 8080
+            initialDelaySeconds: 70
+            timeoutSeconds: 10
+            failureThreshold: 10 
