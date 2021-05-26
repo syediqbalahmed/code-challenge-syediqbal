@@ -19,9 +19,10 @@ phases:
     commands:
       - echo Entered the build phase...
       - echo Change directory to secondary source
-      - cd $CODEBUILD_SRC_DIR
+      #- cd $CODEBUILD_SRC_DIR
       - echo List directory
       - ls -la
+      - pwd
       - echo Push the latest image to cluster
       - kubectl apply -f frontend-deployment.yaml
       - kubectl apply -f frontend-service.yaml
