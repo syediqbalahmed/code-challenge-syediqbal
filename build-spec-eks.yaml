@@ -25,8 +25,8 @@ phases:
       - pwd
       - echo Push the latest image to cluster
       - chmod 777 frontend-deployment.yaml
-      - kubectl apply -f ./frontend-deployment.yaml
-      - kubectl apply -f frontend-service.yaml
+      - kubectl apply -f frontend/frontend-deployment.yaml
+      - kubectl apply -f frontend/frontend-service.yaml
       - kubectl apply -f backend-deployment.yaml
       - kubectl apply -f backend-service.yaml
       - kubectl apply -f postgres-master-deployment.yaml
